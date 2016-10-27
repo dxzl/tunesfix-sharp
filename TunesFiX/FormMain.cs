@@ -13,16 +13,16 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Diagnostics; // "Process" needs this...
 using System.Windows.Forms;
-using System.Xml;
 using MediaTags;
 using MsgBoxCheck;
 using ColumnSorter;
 using Microsoft.Win32; // used for registry access...
 using IWshRuntimeLibrary; // used to access shortcut file-paths...
 //-----------
+using System.Text;
+using System.Xml;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Reflection;
@@ -1622,7 +1622,6 @@ namespace TunesFiX
           int countListFailed = 0;
 
           SongInfo2 si = new SongInfo2();
-          SongInfo2.init(si);
 
           MediaTags.MediaTags tagReader = new MediaTags.MediaTags(g_rootPath);
 
@@ -3439,7 +3438,7 @@ namespace TunesFiX
       try
       {
         // Sort by album-title
-        g_lvwColumnSorter.SortColumn = 2;
+        g_lvwColumnSorter.SortColumn = LV_FIELD_ALBUM;
         g_lvwColumnSorter.Order = SortOrder.Ascending;
 
         // Perform the sort with these new sort options.
