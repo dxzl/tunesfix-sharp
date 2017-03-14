@@ -15,10 +15,10 @@ using System.Resources;
   "to collect songs belonging to compillations and puts them into " +
   "their original folders.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Discrete-Time Systems")]
+[assembly: AssemblyCompany("Discrete-Time Systems (Mr. Swift)")]
 [assembly: AssemblyProduct("TunesFiX")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
-[assembly: AssemblyTrademark("by Mr. Swift")]
+[assembly: AssemblyCopyright("")]
+[assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -42,6 +42,6 @@ using System.Resources;
 //
 // S.S NOTE: using 1.0.* causes the .exe file to get locked so a new compile
 // can't copy the .exe to the bin directory!
-[assembly: AssemblyVersion("1.87.0.0")]
-[assembly: AssemblyFileVersion("1.87.0.0")]
+[assembly: AssemblyVersion("1.88.0.0")]
+[assembly: AssemblyFileVersion("1.88.0.0")]
 [assembly: NeutralResourcesLanguageAttribute("en-US")]

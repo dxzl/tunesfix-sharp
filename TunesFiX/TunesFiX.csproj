@@ -16,8 +16,7 @@
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>TunesFiX.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -63,11 +62,10 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>
-    </AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>DtsSPC.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <DelaySign>false</DelaySign>
@@ -79,7 +77,7 @@
     <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>DC76FE74977124E95C2E7D98EBFDA333BFD783A3</ManifestCertificateThumbprint>
@@ -111,17 +109,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CbtHook">
-      <HintPath>x86DLLs\CbtHook.dll</HintPath>
-    </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>x86DLLs\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>..\x86DLLs\CbtHook.dll</HintPath>
     </Reference>
     <Reference Include="MediaTags">
-      <HintPath>x86DLLs\MediaTags.dll</HintPath>
+      <HintPath>..\x86DLLs\MediaTags.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MsgBoxCheck">
-      <HintPath>x86DLLs\MsgBoxCheck.dll</HintPath>
+      <HintPath>..\x86DLLs\MsgBoxCheck.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -133,123 +128,136 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="TaglibSharp">
-      <HintPath>x86DLLs\TaglibSharp.dll</HintPath>
+      <HintPath>..\x86DLLs\TaglibSharp.dll</HintPath>
     </Reference>
     <Reference Include="WindowsHook">
-      <HintPath>x86DLLs\WindowsHook.dll</HintPath>
+      <HintPath>..\x86DLLs\WindowsHook.dll</HintPath>
     </Reference>
     <Reference Include="WinMediaLib">
-      <HintPath>x86DLLs\WinMediaLib.dll</HintPath>
+      <HintPath>..\x86DLLs\WinMediaLib.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutBox.cs">
+    <Compile Include="Settings.cs" />
+    <Compile Include="src\AboutBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AboutBox.Designer.cs">
+    <Compile Include="src\AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="BufferedListView.cs">
+    <Compile Include="src\BufferedListView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ColumnSorter.cs" />
-    <Compile Include="ExportWPL.cs" />
-    <Compile Include="FormEdit.cs">
+    <Compile Include="src\ColumnSorter.cs" />
+    <Compile Include="src\ExportWPL.cs" />
+    <Compile Include="src\FormFind.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormEdit.Designer.cs">
-      <DependentUpon>FormEdit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormFilters.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormFilters.Designer.cs">
-      <DependentUpon>FormFilters.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormFind.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormFind.Designer.cs">
+    <Compile Include="src\FormFind.Designer.cs">
       <DependentUpon>FormFind.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMain.cs">
+    <Compile Include="src\FormEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMain.Designer.cs">
-      <DependentUpon>FormMain.cs</DependentUpon>
+    <Compile Include="src\FormEdit.Designer.cs">
+      <DependentUpon>FormEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormProcessing.cs">
+    <Compile Include="src\FormFilters.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormProcessing.Designer.cs">
+    <Compile Include="src\FormFilters.designer.cs">
+      <DependentUpon>FormFilters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\FormProcessing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\FormProcessing.Designer.cs">
       <DependentUpon>FormProcessing.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormSetChecks.cs">
+    <Compile Include="src\FormSetChecks.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormSetChecks.Designer.cs">
+    <Compile Include="src\FormSetChecks.Designer.cs">
       <DependentUpon>FormSetChecks.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormStatus.cs">
+    <Compile Include="src\FormStatus.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormStatus.Designer.cs">
+    <Compile Include="src\FormStatus.designer.cs">
       <DependentUpon>FormStatus.cs</DependentUpon>
     </Compile>
-    <Compile Include="MemoryBox.cs">
+    <Compile Include="src\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MemoryBox.designer.cs">
+    <Compile Include="src\FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\MemoryBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\MemoryBox.designer.cs">
       <DependentUpon>MemoryBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="src\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AboutBox.resx">
+    <EmbeddedResource Include="src\AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormEdit.resx">
-      <DependentUpon>FormEdit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormFilters.resx">
-      <DependentUpon>FormFilters.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormFind.resx">
+    <EmbeddedResource Include="src\FormFind.resx">
       <DependentUpon>FormFind.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMain.resx">
-      <DependentUpon>FormMain.cs</DependentUpon>
+    <EmbeddedResource Include="src\FormEdit.resx">
+      <DependentUpon>FormEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormProcessing.resx">
+    <EmbeddedResource Include="src\FormFilters.resx">
+      <DependentUpon>FormFilters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\FormProcessing.resx">
       <DependentUpon>FormProcessing.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormSetChecks.resx">
+    <EmbeddedResource Include="src\FormSetChecks.resx">
       <DependentUpon>FormSetChecks.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormStatus.resx">
+    <EmbeddedResource Include="src\FormStatus.resx">
       <DependentUpon>FormStatus.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MemoryBox.resx">
-      <DependentUpon>MemoryBox.cs</DependentUpon>
+    <EmbeddedResource Include="src\FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="src\MemoryBox.resx">
+      <DependentUpon>MemoryBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <EmbeddedResource Include="app.manifest" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Monkey.bmp" />
+    <Content Include="Resources\TunesFiX.ico" />
+    <Content Include="TunesFiX.ico" />
+    <None Include="Resources\TunesFiX.ico" />
+    <EmbeddedResource Include="Resources\Monkey.bmp" />
+    <EmbeddedResource Include="Resources\TunesFiX.ico" />
+    <Content Include="Resources\TunesFiX.ico" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="IWshRuntimeLibrary">

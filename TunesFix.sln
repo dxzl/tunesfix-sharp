@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TunesFiX", "TunesFix\TunesFiX.csproj", "{A813280B-BAC6-4E95-8141-3CC6E32D2ED3}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "TunesFiX Installer", "TunesFiX Installer\TunesFiX Installer.vdproj", "{196E21E1-CC3D-4CDA-AD1B-1702A4756C68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,14 @@ Global
 		{A813280B-BAC6-4E95-8141-3CC6E32D2ED3}.Release|x64.Build.0 = Release|x64
 		{A813280B-BAC6-4E95-8141-3CC6E32D2ED3}.Release|x86.ActiveCfg = Release|x86
 		{A813280B-BAC6-4E95-8141-3CC6E32D2ED3}.Release|x86.Build.0 = Release|x86
+		{196E21E1-CC3D-4CDA-AD1B-1702A4756C68}.Debug|Any CPU.ActiveCfg = Debug
+		{196E21E1-CC3D-4CDA-AD1B-1702A4756C68}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{196E21E1-CC3D-4CDA-AD1B-1702A4756C68}.Debug|x64.ActiveCfg = Debug
+		{196E21E1-CC3D-4CDA-AD1B-1702A4756C68}.Debug|x86.ActiveCfg = Debug
+		{196E21E1-CC3D-4CDA-AD1B-1702A4756C68}.Release|Any CPU.ActiveCfg = Release
+		{196E21E1-CC3D-4CDA-AD1B-1702A4756C68}.Release|Mixed Platforms.ActiveCfg = Release
+		{196E21E1-CC3D-4CDA-AD1B-1702A4756C68}.Release|x64.ActiveCfg = Release
+		{196E21E1-CC3D-4CDA-AD1B-1702A4756C68}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
