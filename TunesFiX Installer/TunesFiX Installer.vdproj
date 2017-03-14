@@ -94,37 +94,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E8C956483ABBB13CA0BF78886A22C69E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_DBA9E0920BB5493BBD470A31756C9210"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_96857A36FEB6786DE3CD7AD9144B50D8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F4BAA325B04D4133B2551B52F9224876"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_77617DA5BE7FF1E1518BD1319989A1BD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B7BA6D22AA1003A4F7DF19894D073F20"
+        "OwnerKey" = "8:_5D4192CBE1FCE338D5FC5AD8CA0DE546"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -136,7 +106,37 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5D4192CBE1FCE338D5FC5AD8CA0DE546"
+        "OwnerKey" = "8:_B7BA6D22AA1003A4F7DF19894D073F20"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_77617DA5BE7FF1E1518BD1319989A1BD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_F4BAA325B04D4133B2551B52F9224876"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_96857A36FEB6786DE3CD7AD9144B50D8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_DBA9E0920BB5493BBD470A31756C9210"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E8C956483ABBB13CA0BF78886A22C69E"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -466,15 +466,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:TunesFiX"
-        "ProductCode" = "8:{7672D3D6-1B7E-41E1-AE82-AE5B8C7D9690}"
-        "PackageCode" = "8:{BECAD076-C96B-4179-9D84-4C73F5BF0372}"
+        "ProductCode" = "8:{9AD1B471-ABF6-4C58-94B7-CE7556470DFA}"
+        "PackageCode" = "8:{8B018297-2D36-49DD-ADA2-29FF5D04B541}"
         "UpgradeCode" = "8:{0310A35C-0175-4E56-AAEC-CFBA702608CE}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:FALSE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.88.1"
+        "ProductVersion" = "8:1.88.2"
         "Manufacturer" = "8:Discrete-Time Systems"
         "ARPHELPTELEPHONE" = "8:dxzl@live.com"
         "ARPHELPLINK" = "8:"
@@ -544,13 +544,27 @@
                         {
                             "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_E6923EF9B2FA4D85926AD358754B810E"
                             {
-                            "Name" = "8:[Manufacturer]"
+                            "Name" = "8:Discrete-Time Systems"
                             "Condition" = "8:"
                             "AlwaysCreate" = "11:FALSE"
                             "DeleteAtUninstall" = "11:FALSE"
                             "Transitive" = "11:FALSE"
                                 "Keys"
                                 {
+                                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_37F6F03CE86F43CCAB78213F135F225D"
+                                    {
+                                    "Name" = "8:TunesFiX"
+                                    "Condition" = "8:"
+                                    "AlwaysCreate" = "11:FALSE"
+                                    "DeleteAtUninstall" = "11:TRUE"
+                                    "Transitive" = "11:FALSE"
+                                        "Keys"
+                                        {
+                                        }
+                                        "Values"
+                                        {
+                                        }
+                                    }
                                 }
                                 "Values"
                                 {
