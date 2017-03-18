@@ -42,6 +42,6 @@ using System.Resources;
 //
 // S.S NOTE: using 1.0.* causes the .exe file to get locked so a new compile
 // can't copy the .exe to the bin directory!
-[assembly: AssemblyVersion("1.88.0.0")]
-[assembly: AssemblyFileVersion("1.88.0.0")]
+[assembly: AssemblyVersion("1.89.0.0")]
+[assembly: AssemblyFileVersion("1.89.0.0")]
 [assembly: NeutralResourcesLanguageAttribute("en-US")]
