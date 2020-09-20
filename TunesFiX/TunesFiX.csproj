@@ -16,7 +16,7 @@
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>TunesFiX.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\TunesFiX.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -62,10 +62,10 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
+    <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>DtsSPC.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>DtsUWP.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <DelaySign>false</DelaySign>
@@ -77,14 +77,13 @@
     <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>false</SignManifests>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>DC76FE74977124E95C2E7D98EBFDA333BFD783A3</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>67E2B13C181ECA84342030DA517949FFCB333DCC</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>
-    </ManifestKeyFile>
+    <ManifestKeyFile>DtsUWP.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
@@ -108,16 +107,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CbtHook">
-      <HintPath>..\x86DLLs\CbtHook.dll</HintPath>
-    </Reference>
-    <Reference Include="MediaTags">
-      <HintPath>..\x86DLLs\MediaTags.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="MsgBoxCheck">
-      <HintPath>..\x86DLLs\MsgBoxCheck.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -127,15 +117,6 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="TaglibSharp">
-      <HintPath>..\x86DLLs\TaglibSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="WindowsHook">
-      <HintPath>..\x86DLLs\WindowsHook.dll</HintPath>
-    </Reference>
-    <Reference Include="WinMediaLib">
-      <HintPath>..\x86DLLs\WinMediaLib.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Settings.cs" />
@@ -239,6 +220,9 @@
     </EmbeddedResource>
     <None Include="app.config" />
     <EmbeddedResource Include="app.manifest" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="DtsSPC.pfx" />
+    <None Include="DtsUWP.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -250,13 +234,28 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Monkey.bmp" />
-    <Content Include="Resources\TunesFiX.ico" />
-    <Content Include="TunesFiX.ico" />
-    <None Include="Resources\TunesFiX.ico" />
+    <None Include="images\TunesFiX.ico" />
     <EmbeddedResource Include="Resources\Monkey.bmp" />
     <EmbeddedResource Include="Resources\TunesFiX.ico" />
-    <Content Include="Resources\TunesFiX.ico" />
+    <Content Include="TunesFiX.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MediaTagSharp\src\MediaTags\MediaTags.csproj">
+      <Project>{f0426bab-cbdf-448f-8a49-35f5e94bd076}</Project>
+      <Name>MediaTags</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MediaTagSharp\src\Taglib-Sharp\TaglibSharp.csproj">
+      <Project>{96153ca0-ef57-485f-baa8-40362039b596}</Project>
+      <Name>TaglibSharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MediaTagSharp\src\WinMediaLib\WinMediaLib.csproj">
+      <Project>{55f32df2-0e4b-4e03-9a02-c511854c4199}</Project>
+      <Name>WinMediaLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MsgBoxCheck\MsgBoxCheck\MsgBoxCheck.csproj">
+      <Project>{43d66268-9336-4118-a30e-fc43ced0e62d}</Project>
+      <Name>MsgBoxCheck</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="IWshRuntimeLibrary">

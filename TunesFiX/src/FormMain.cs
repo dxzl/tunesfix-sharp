@@ -3034,7 +3034,7 @@ namespace TunesFiX
             finally
             {
                 EnableControls();
-                fileSystemWatcher1.EnableRaisingEvents = saveEnabled;
+                try { fileSystemWatcher1.EnableRaisingEvents = saveEnabled; } catch { } // throws exception (need to investigate)
             }
         }
         //---------------------------------------------------------------------------
