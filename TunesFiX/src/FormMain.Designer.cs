@@ -61,6 +61,7 @@ namespace TunesFiX
             this.checkAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uncheckAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.richTextBox = new System.Windows.Forms.RichTextBox();
+            this.labelPath = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.openMusicFolderMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -96,6 +97,8 @@ namespace TunesFiX
             this.checkBoxExcel = new System.Windows.Forms.CheckBox();
             this.toolTips = new System.Windows.Forms.ToolTip(this.components);
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
+            this.reloadMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -114,13 +117,15 @@ namespace TunesFiX
             this.tableLayoutPanel1.Controls.Add(this.splitContainer1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.songView, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.richTextBox, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.labelPath, 0, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(817, 310);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -129,7 +134,7 @@ namespace TunesFiX
             this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.Location = new System.Drawing.Point(3, 277);
+            this.splitContainer1.Location = new System.Drawing.Point(3, 257);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -179,14 +184,16 @@ namespace TunesFiX
             // songView
             // 
             this.songView.AllowDrop = true;
+            this.songView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.songView.CheckBoxes = true;
             this.songView.ContextMenuStrip = this.contextMenuStrip1;
-            this.songView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.songView.FullRowSelect = true;
             this.songView.HideSelection = false;
             this.songView.Location = new System.Drawing.Point(3, 67);
             this.songView.Name = "songView";
-            this.songView.Size = new System.Drawing.Size(811, 204);
+            this.songView.Size = new System.Drawing.Size(811, 184);
             this.songView.TabIndex = 5;
             this.songView.UseCompatibleStateImageBehavior = false;
             this.songView.View = System.Windows.Forms.View.Details;
@@ -215,39 +222,39 @@ namespace TunesFiX
             this.checkAllToolStripMenuItem,
             this.uncheckAllToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(271, 242);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(270, 242);
             // 
             // clearToolStripMenuItem
             // 
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
             this.clearToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(270, 22);
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.clearToolStripMenuItem.Text = "C&lear";
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(267, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(266, 6);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(270, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.editToolStripMenuItem.Text = "&Edit Song Tag(s)";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(267, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(266, 6);
             // 
             // findToolStripMenuItem
             // 
             this.findToolStripMenuItem.Name = "findToolStripMenuItem";
             this.findToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
-            this.findToolStripMenuItem.Size = new System.Drawing.Size(270, 22);
+            this.findToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.findToolStripMenuItem.Text = "&Find";
             this.findToolStripMenuItem.Click += new System.EventHandler(this.findToolStripMenuItem_Click);
             // 
@@ -255,19 +262,19 @@ namespace TunesFiX
             // 
             this.findNextToolStripMenuItem.Name = "findNextToolStripMenuItem";
             this.findNextToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
-            this.findNextToolStripMenuItem.Size = new System.Drawing.Size(270, 22);
+            this.findNextToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.findNextToolStripMenuItem.Text = "Find &Next";
             this.findNextToolStripMenuItem.Click += new System.EventHandler(this.findNextToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(267, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(266, 6);
             // 
             // copyToClipboardAllMenuItem
             // 
             this.copyToClipboardAllMenuItem.Name = "copyToClipboardAllMenuItem";
-            this.copyToClipboardAllMenuItem.Size = new System.Drawing.Size(270, 22);
+            this.copyToClipboardAllMenuItem.Size = new System.Drawing.Size(269, 22);
             this.copyToClipboardAllMenuItem.Text = "Copy To Clipboard (All)";
             this.copyToClipboardAllMenuItem.Click += new System.EventHandler(this.copyToClipboardAllMenuItem_Click);
             // 
@@ -275,14 +282,14 @@ namespace TunesFiX
             // 
             this.copyToClipboardSelectedMenuItem.Name = "copyToClipboardSelectedMenuItem";
             this.copyToClipboardSelectedMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToClipboardSelectedMenuItem.Size = new System.Drawing.Size(270, 22);
+            this.copyToClipboardSelectedMenuItem.Size = new System.Drawing.Size(269, 22);
             this.copyToClipboardSelectedMenuItem.Text = "&Copy To Clipboard (Selected)";
             this.copyToClipboardSelectedMenuItem.Click += new System.EventHandler(this.copyToClipboardSelectedMenuItem_Click);
             // 
             // copyToClipboardToolStripMenuItem
             // 
             this.copyToClipboardToolStripMenuItem.Name = "copyToClipboardToolStripMenuItem";
-            this.copyToClipboardToolStripMenuItem.Size = new System.Drawing.Size(270, 22);
+            this.copyToClipboardToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.copyToClipboardToolStripMenuItem.Text = "Copy To Clipboard (Checked)";
             this.copyToClipboardToolStripMenuItem.Click += new System.EventHandler(this.copyToClipboardCheckedMenuItem_Click);
             // 
@@ -290,21 +297,21 @@ namespace TunesFiX
             // 
             this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
             this.selectAllToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(270, 22);
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.selectAllToolStripMenuItem.Text = "&Select All";
             this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.menuSelectAll_Click);
             // 
             // checkAllToolStripMenuItem
             // 
             this.checkAllToolStripMenuItem.Name = "checkAllToolStripMenuItem";
-            this.checkAllToolStripMenuItem.Size = new System.Drawing.Size(270, 22);
+            this.checkAllToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.checkAllToolStripMenuItem.Text = "Check All";
             this.checkAllToolStripMenuItem.Click += new System.EventHandler(this.menuCheckAll_Click);
             // 
             // uncheckAllToolStripMenuItem
             // 
             this.uncheckAllToolStripMenuItem.Name = "uncheckAllToolStripMenuItem";
-            this.uncheckAllToolStripMenuItem.Size = new System.Drawing.Size(270, 22);
+            this.uncheckAllToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.uncheckAllToolStripMenuItem.Text = "&Uncheck All";
             this.uncheckAllToolStripMenuItem.Click += new System.EventHandler(this.menuUncheckAll_Click);
             // 
@@ -320,6 +327,15 @@ namespace TunesFiX
             this.richTextBox.Size = new System.Drawing.Size(811, 58);
             this.richTextBox.TabIndex = 6;
             this.richTextBox.Text = "";
+            // 
+            // labelPath
+            // 
+            this.labelPath.AutoSize = true;
+            this.labelPath.Location = new System.Drawing.Point(3, 290);
+            this.labelPath.Name = "labelPath";
+            this.labelPath.Size = new System.Drawing.Size(61, 13);
+            this.labelPath.TabIndex = 7;
+            this.labelPath.Text = "<root path>";
             // 
             // menuStrip1
             // 
@@ -340,6 +356,8 @@ namespace TunesFiX
             // 
             this.menuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openMusicFolderMenuItem,
+            this.reloadMenuItem,
+            this.clearMenuItem,
             this.exitToolStripMenuItem});
             this.menuFile.Name = "menuFile";
             this.menuFile.Size = new System.Drawing.Size(37, 20);
@@ -348,14 +366,14 @@ namespace TunesFiX
             // openMusicFolderMenuItem
             // 
             this.openMusicFolderMenuItem.Name = "openMusicFolderMenuItem";
-            this.openMusicFolderMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.openMusicFolderMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openMusicFolderMenuItem.Text = "&Open Music Folder";
             this.openMusicFolderMenuItem.Click += new System.EventHandler(this.menuOpenMusicFolder_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -387,7 +405,7 @@ namespace TunesFiX
             // 
             this.viewPerformerMenuItem.CheckOnClick = true;
             this.viewPerformerMenuItem.Name = "viewPerformerMenuItem";
-            this.viewPerformerMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.viewPerformerMenuItem.Size = new System.Drawing.Size(180, 22);
             this.viewPerformerMenuItem.Text = "Per&former";
             this.viewPerformerMenuItem.Click += new System.EventHandler(this.menuViewItem_Click);
             // 
@@ -395,7 +413,7 @@ namespace TunesFiX
             // 
             this.viewComposerMenuItem.CheckOnClick = true;
             this.viewComposerMenuItem.Name = "viewComposerMenuItem";
-            this.viewComposerMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.viewComposerMenuItem.Size = new System.Drawing.Size(180, 22);
             this.viewComposerMenuItem.Text = "&Composer";
             this.viewComposerMenuItem.Click += new System.EventHandler(this.menuViewItem_Click);
             // 
@@ -403,7 +421,7 @@ namespace TunesFiX
             // 
             this.viewGenreMenuItem.CheckOnClick = true;
             this.viewGenreMenuItem.Name = "viewGenreMenuItem";
-            this.viewGenreMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.viewGenreMenuItem.Size = new System.Drawing.Size(180, 22);
             this.viewGenreMenuItem.Text = "&Genre";
             this.viewGenreMenuItem.Click += new System.EventHandler(this.menuViewItem_Click);
             // 
@@ -411,7 +429,7 @@ namespace TunesFiX
             // 
             this.viewPublisherMenuItem.CheckOnClick = true;
             this.viewPublisherMenuItem.Name = "viewPublisherMenuItem";
-            this.viewPublisherMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.viewPublisherMenuItem.Size = new System.Drawing.Size(180, 22);
             this.viewPublisherMenuItem.Text = "P&ublisher";
             this.viewPublisherMenuItem.Click += new System.EventHandler(this.menuViewItem_Click);
             // 
@@ -419,7 +437,7 @@ namespace TunesFiX
             // 
             this.viewConductorMenuItem.CheckOnClick = true;
             this.viewConductorMenuItem.Name = "viewConductorMenuItem";
-            this.viewConductorMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.viewConductorMenuItem.Size = new System.Drawing.Size(180, 22);
             this.viewConductorMenuItem.Text = "Co&nductor";
             this.viewConductorMenuItem.Click += new System.EventHandler(this.menuViewItem_Click);
             // 
@@ -427,7 +445,7 @@ namespace TunesFiX
             // 
             this.viewYearMenuItem.CheckOnClick = true;
             this.viewYearMenuItem.Name = "viewYearMenuItem";
-            this.viewYearMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.viewYearMenuItem.Size = new System.Drawing.Size(180, 22);
             this.viewYearMenuItem.Text = "&Year";
             this.viewYearMenuItem.Click += new System.EventHandler(this.menuViewItem_Click);
             // 
@@ -435,7 +453,7 @@ namespace TunesFiX
             // 
             this.viewTrackMenuItem.CheckOnClick = true;
             this.viewTrackMenuItem.Name = "viewTrackMenuItem";
-            this.viewTrackMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.viewTrackMenuItem.Size = new System.Drawing.Size(180, 22);
             this.viewTrackMenuItem.Text = "&Track";
             this.viewTrackMenuItem.Click += new System.EventHandler(this.menuViewItem_Click);
             // 
@@ -443,7 +461,7 @@ namespace TunesFiX
             // 
             this.viewDurationMenuItem.CheckOnClick = true;
             this.viewDurationMenuItem.Name = "viewDurationMenuItem";
-            this.viewDurationMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.viewDurationMenuItem.Size = new System.Drawing.Size(180, 22);
             this.viewDurationMenuItem.Text = "&Time";
             this.viewDurationMenuItem.Click += new System.EventHandler(this.menuViewItem_Click);
             // 
@@ -451,7 +469,7 @@ namespace TunesFiX
             // 
             this.viewCommentsMenuItem.CheckOnClick = true;
             this.viewCommentsMenuItem.Name = "viewCommentsMenuItem";
-            this.viewCommentsMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.viewCommentsMenuItem.Size = new System.Drawing.Size(180, 22);
             this.viewCommentsMenuItem.Text = "Co&mments";
             this.viewCommentsMenuItem.Click += new System.EventHandler(this.menuViewItem_Click);
             // 
@@ -459,7 +477,7 @@ namespace TunesFiX
             // 
             this.viewLyricsMenuItem.CheckOnClick = true;
             this.viewLyricsMenuItem.Name = "viewLyricsMenuItem";
-            this.viewLyricsMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.viewLyricsMenuItem.Size = new System.Drawing.Size(180, 22);
             this.viewLyricsMenuItem.Text = "&Lyrics";
             this.viewLyricsMenuItem.Click += new System.EventHandler(this.menuViewItem_Click);
             // 
@@ -467,7 +485,7 @@ namespace TunesFiX
             // 
             this.viewPathMenuItem.CheckOnClick = true;
             this.viewPathMenuItem.Name = "viewPathMenuItem";
-            this.viewPathMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.viewPathMenuItem.Size = new System.Drawing.Size(180, 22);
             this.viewPathMenuItem.Text = "&Path";
             this.viewPathMenuItem.Click += new System.EventHandler(this.menuViewItem_Click);
             // 
@@ -483,7 +501,7 @@ namespace TunesFiX
             this.deleteSongTagsToolStripMenuItem,
             this.removeEmptyDirectoriesMenuItem});
             this.menuTools.Name = "menuTools";
-            this.menuTools.Size = new System.Drawing.Size(47, 20);
+            this.menuTools.Size = new System.Drawing.Size(46, 20);
             this.menuTools.Text = "&Tools";
             // 
             // playSongToolStripMenuItem
@@ -598,6 +616,20 @@ namespace TunesFiX
             this.fileSystemWatcher1.Deleted += new System.IO.FileSystemEventHandler(this.fileSystemWatcher1_Deleted);
             this.fileSystemWatcher1.Renamed += new System.IO.RenamedEventHandler(this.fileSystemWatcher1_Renamed);
             // 
+            // reloadMenuItem
+            // 
+            this.reloadMenuItem.Name = "reloadMenuItem";
+            this.reloadMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.reloadMenuItem.Text = "&Reload";
+            this.reloadMenuItem.Click += new System.EventHandler(this.reloadMenuItem_Click);
+            // 
+            // clearMenuItem
+            // 
+            this.clearMenuItem.Name = "clearMenuItem";
+            this.clearMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clearMenuItem.Text = "&Clear";
+            this.clearMenuItem.Click += new System.EventHandler(this.clearMenuItem_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -611,12 +643,13 @@ namespace TunesFiX
             this.MinimumSize = new System.Drawing.Size(489, 39);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "TunesFiX 1.90";
+            this.Text = "TunesFiX 1.92";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
             this.Shown += new System.EventHandler(this.FormMain_Shown);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -688,6 +721,9 @@ namespace TunesFiX
     private System.Windows.Forms.ToolStripMenuItem viewLyricsMenuItem;
     private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     private System.IO.FileSystemWatcher fileSystemWatcher1;
-  }
+        private System.Windows.Forms.Label labelPath;
+        private System.Windows.Forms.ToolStripMenuItem reloadMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clearMenuItem;
+    }
 }
 

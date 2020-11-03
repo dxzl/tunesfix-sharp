@@ -96,28 +96,28 @@ namespace TunesFiX
         internal const string MSGBOX_B1 = "Create new directories for the selected songs and move files?";
         internal const string MSGBOX_B2 = "Create new tags for the selected songs using the file-path and name?";
 
-        internal const string MSGBOX_C = "Next, you will want to use the checked songs as a guide for selecting groups of songs" +
-               " and processing them. Usually you will want to select checked songs that all belong to a particular album." +
-               " Hold the Ctrl key and click all of the songs you want to perform the same type of operation on. For example," +
-               " click every song that:\r\n\r\n" +
-               "A) Has accurate tag information such as Title, Artist and Album but\r\n" +
-               "   the songs are in the wrong directory.\r\n\r\n" +
-               "   or\r\n\r\n" +
-               "B) The songs are in a directory of the format \"Artist\\Album\\Title.mp3\"\r\n" +
-               "   but the tags are wrong.\r\n\r\n" +
+        internal const string MSGBOX_C = "Next, you will want to use the checked songs as a guide for selecting groups of songs " +
+               "and processing them. Usually you will want to select checked songs that all belong to a particular album. " +
+               "Hold the Ctrl key and click all of the songs you want to perform the same type of operation on. For example, " +
+               "click every song that:\r\n\r\n" +
+               "A) Has accurate tag information such as Title, Artist and Album but "  +
+               "the songs are in the wrong directory.\r\n\r\n" +
+               "or\r\n\r\n" +
+               "B) The songs are in a directory of the format \"Artist\\Album\\Title.mp3\" " +
+               "but the tags are wrong.\r\n\r\n" +
                "Then press the \"Process\" button...";
 
         internal const string MSGBROWSER = "Select a destination folder for your " +
                              "music. New folders will be created in and songs will be moved into the " +
                              "EXACT folder you select. Usually you want to select your top-level music folder.";
 
-        internal const string MSGTOOLTIP_A = "Check to format clipboard text into rows and columns\r\n" +
+        internal const string MSGTOOLTIP_A = "Check to format clipboard text into rows and columns " +
             "you can paste into Microsoft Excel.";
 
-        internal const string MSGTOOLTIP_B = "Click to organize/move your music compilations\r\n" + "by album-title.";
+        internal const string MSGTOOLTIP_B = "Click to organize/move your music compilations by album-title.";
 
-        internal const string MSGDBTAP = "You need to select the songs you want to modify. First press \"Set Checks\"\r\n" +
-              "to flag the songs you may want to select for processing. Select songs\r\n" +
+        internal const string MSGDBTAP = "You need to select the songs you want to modify. First press \"Set Checks\" " +
+              "to flag the songs you may want to select for processing. Select songs " +
               "by pressing Ctrl and clicking them. Then press the Process button.";
 
         internal const string MSGCOMP = "Items in the list that are checked should belong to compilations. " +
@@ -133,11 +133,14 @@ namespace TunesFiX
         internal const string MSGFBD_OPENMUSICFOLDER = "Select your root music folder. " +
                             "(For example: My Music\\iTunes\\iTunes Media\\Music)";
 
-        internal const string MSGSTATUS_A = "Transfering album art images and removing empty folders...\r\n" + "PRESS ESC TO CANCEL!";
+        internal const string MSGSTATUS_A = "Transfering album art images and removing empty folders...\r\n" +
+            "PRESS ESC TO CANCEL!";
 
-        internal const string MSGSTATUS_B = "Copying selected files, please wait...\r\n" + "PRESS ESC TO CANCEL!";
+        internal const string MSGSTATUS_B = "Copying selected files, please wait...\r\n" +
+            "PRESS ESC TO CANCEL!";
 
-        internal const string MSGSTATUS_C = "Removing unchecked items, please wait...\r\n" + "PRESS ESC TO CANCEL!";
+        internal const string MSGSTATUS_C = "Removing unchecked items, please wait...\r\n" +
+            "PRESS ESC TO CANCEL!";
 
         internal const int LV_FIELD_COUNT = 14; // # of fields in SongView
 
@@ -170,7 +173,7 @@ namespace TunesFiX
 
         // used with fileSystemWatcher1
         private string g_watcherOldPath, g_watcherNewPath;
-        private bool g_watcherDeleted, g_watcherRenamed;
+        private bool g_watcherDeleted, g_watcherRenamed, g_watcherFlushing;
 
         private string g_rootPath;
         private Int32 g_fieldVisible;
@@ -362,8 +365,13 @@ namespace TunesFiX
 
             g_rootPath = sRootPath;
 
-            if (string.IsNullOrEmpty(g_rootPath))
-                g_rootPath = Environment.SpecialFolder.MyMusic.ToString();
+            if (!Directory.Exists(g_rootPath))
+            {
+                labelPath.Text = "";
+                return;
+            }
+
+            labelPath.Text = g_rootPath;
 
             g_fieldVisible = iFieldVisible;
             g_excludeCompilations = bExcludeCompilations;
@@ -374,24 +382,23 @@ namespace TunesFiX
         //---------------------------------------------------------------------------
         private bool RegistryWrite()
         {
-            RegistryKey key;
-
-            using (key = Registry.CurrentUser.OpenSubKey(REGKEY, true))
+            using (Registry.CurrentUser.OpenSubKey(REGKEY, true))
             {
-                if ((key = Registry.CurrentUser.CreateSubKey(REGKEY)) == null)
+                RegistryKey subKey;
+                if ((subKey = Registry.CurrentUser.CreateSubKey(REGKEY)) == null)
                     return false;
 
                 try
                 {
-                    key.SetValue("sFileFilters", DecodeFilters(g_fileFilterList));
-                    key.SetValue("iMinSongs", g_minSongs);
-                    key.SetValue("iPercent", (int)(g_ratio * 100));
-                    key.SetValue("sRootPath", g_rootPath);
-                    key.SetValue("iFieldVisible", g_fieldVisible);
-                    key.SetValue("iCheckingMode", g_checkingMode);
-                    key.SetValue("bExcludeCompilations", g_excludeCompilations);
-                    key.SetValue("bIgnorePrefix", g_ignorePrefix);
-                    key.SetValue("sPrefix", g_prefix);
+                    subKey.SetValue("sFileFilters", DecodeFilters(g_fileFilterList));
+                    subKey.SetValue("iMinSongs", g_minSongs);
+                    subKey.SetValue("iPercent", (int)(g_ratio * 100));
+                    subKey.SetValue("sRootPath", g_rootPath);
+                    subKey.SetValue("iFieldVisible", g_fieldVisible);
+                    subKey.SetValue("iCheckingMode", g_checkingMode);
+                    subKey.SetValue("bExcludeCompilations", g_excludeCompilations);
+                    subKey.SetValue("bIgnorePrefix", g_ignorePrefix);
+                    subKey.SetValue("sPrefix", g_prefix);
                 }
                 catch
                 {
@@ -445,6 +452,8 @@ namespace TunesFiX
             try
             {
                 this.songView.ListViewItemSorter = null; // disable sorting
+
+                DisableFileSystemWatcher();
 
                 richTextBox.Text = MSG_A;
 
@@ -669,7 +678,6 @@ namespace TunesFiX
                 richTextBox.Text = MSG_C;
             }
 
-            NotifyIfFileChanged();
 
             EnableControls();
 
@@ -1031,9 +1039,7 @@ namespace TunesFiX
                         g_initPathToTag = false;
 
                         string msg = MSGBOX_C;
-
                         MsgBox dlg = new MsgBox();
-
                         DialogResult dr = dlg.Show(MSGBOXREGKEY, "DontShow1", DialogResult.OK, "Don't show this again",
                           msg, TUNESFIX, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -1353,15 +1359,14 @@ namespace TunesFiX
 
         private void buttonProcess_Click(object sender, EventArgs e)
         {
-            bool saveEnabled = fileSystemWatcher1.EnableRaisingEvents;
-            fileSystemWatcher1.EnableRaisingEvents = false;
+            bool saveEnabled = DisableFileSystemWatcher();
 
             if (this.g_checkingMode == FormSetChecks.SETCHECK_COMPILLATIONS)
                 ProcessCompilations();
             else
                 ProcessDBTAP();
 
-            fileSystemWatcher1.EnableRaisingEvents = saveEnabled;
+            EnableFileSystemWatcher(saveEnabled);
         }
         //---------------------------------------------------------------------------
         private void ProcessDBTAP()
@@ -1427,7 +1432,16 @@ namespace TunesFiX
                     return;
 
                 destPath = folderBrowserDialog1.SelectedPath;
+
                 g_rootPath = destPath;
+
+                if (!Directory.Exists(g_rootPath))
+                {
+                    labelPath.Text = "";
+                    return;
+                }
+
+                labelPath.Text = g_rootPath;
             }
 
             DisableControls();
@@ -1779,7 +1793,6 @@ namespace TunesFiX
             }
             finally
             {
-                NotifyIfFileChanged();
                 EnableControls();
             }
         }
@@ -1799,12 +1812,11 @@ namespace TunesFiX
                 return;
             }
 
-            MessageBox.Show("IF YOU DO NOT HAVE A BACKUP OF YOUR SONGS, PLEASE REPLY " + Environment.NewLine + "\"NO\" TO THE NEXT QUESTION AND GO MAKE ONE!", TUNESFIX,
+            MessageBox.Show("IF YOU DO NOT HAVE A BACKUP OF YOUR SONGS, PLEASE REPLY \"NO\" TO THE NEXT QUESTION AND GO MAKE ONE!", TUNESFIX,
               MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
             DialogResult result =
-            MessageBox.Show("Now we will create new directories for your" + Environment.NewLine +
-                  "compilations and move files. OK to continue?", TUNESFIX,
+            MessageBox.Show("Now we will create new directories for your compilations and move files. OK to continue?", TUNESFIX,
                                MessageBoxButtons.YesNo,
                                       MessageBoxIcon.None,
                                               MessageBoxDefaultButton.Button2);
@@ -1960,10 +1972,16 @@ namespace TunesFiX
                 "Destination:" + "\"" + destPath + "\"";
             }
 
+            // we deleted empty root directory? change it to destPath
+            if (!Directory.Exists(g_rootPath))
+            {
+                g_rootPath = destPath;
+                labelPath.Text = g_rootPath;
+            }
+
             richTextBox.Text = tbInfo;
             MessageBox.Show(mbInfo, TUNESFIX);
 
-            NotifyIfFileChanged();
             EnableControls();
         }
         //---------------------------------------------------------------------------
@@ -2264,8 +2282,7 @@ namespace TunesFiX
         private int RemoveEmptyDirectories(string startLocation)
         // Delete empties in startLocation then delete ourself
         {
-            bool saveEnabled = fileSystemWatcher1.EnableRaisingEvents;
-            fileSystemWatcher1.EnableRaisingEvents = false;
+            bool saveEnabled = DisableFileSystemWatcher();
 
             g_RemoveCounter = 0; // Global counter...
             g_FailCounter = 0; // Global counter...
@@ -2285,7 +2302,7 @@ namespace TunesFiX
                 }
             }
 
-            fileSystemWatcher1.EnableRaisingEvents = saveEnabled;
+            EnableFileSystemWatcher(saveEnabled);
 
             return g_RemoveCounter; // return global counter
         }
@@ -2377,10 +2394,23 @@ namespace TunesFiX
                 {
                     string[] filePaths = (string[])(e.Data.GetData(DataFormats.FileDrop));
 
-                    foreach (string fileLoc in filePaths)
-                        // Code to read the contents of the text file
-                        if (System.IO.File.Exists(fileLoc))
-                            AddFileToSongView(tagReader, fileLoc);
+                    if (filePaths.Length == 0)
+                        return;
+
+                    var dirPath = filePaths[0];
+
+                    if (filePaths.Length == 1 && Directory.Exists(dirPath))
+                    {
+                        g_rootPath = dirPath;
+                        processFiles();
+                    }
+                    else
+                    {
+                        foreach (string fileLoc in filePaths)
+                            // Code to read the contents of the text file
+                            if (System.IO.File.Exists(fileLoc))
+                                AddFileToSongView(tagReader, fileLoc);
+                    }
                 }
                 else if (e.Data.GetDataPresent(DataFormats.Text))
                 {
@@ -2525,8 +2555,7 @@ namespace TunesFiX
 
             if (dr != DialogResult.Yes) return;
 
-            bool saveEnabled = fileSystemWatcher1.EnableRaisingEvents;
-            fileSystemWatcher1.EnableRaisingEvents = false;
+            bool saveEnabled = DisableFileSystemWatcher();
 
             try
             {
@@ -3033,8 +3062,8 @@ namespace TunesFiX
             }
             finally
             {
+                EnableFileSystemWatcher(saveEnabled);
                 EnableControls();
-                try { fileSystemWatcher1.EnableRaisingEvents = saveEnabled; } catch { } // throws exception (need to investigate)
             }
         }
         //---------------------------------------------------------------------------
@@ -3846,6 +3875,19 @@ namespace TunesFiX
             regKey.Close();
         }
         //---------------------------------------------------------------------------
+        private void reloadMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Directory.Exists(g_rootPath))
+                processFiles();
+            else
+                menuOpenMusicFolder_Click(null, null);
+        }
+        //---------------------------------------------------------------------------
+        private void clearMenuItem_Click(object sender, EventArgs e)
+        {
+            SongViewInit();
+        }
+        //---------------------------------------------------------------------------
         private void menuOpenMusicFolder_Click(object sender, EventArgs e)
         {
             folderBrowserDialog1.Description = MSGFBD_OPENMUSICFOLDER;
@@ -3858,11 +3900,18 @@ namespace TunesFiX
 
             g_rootPath = folderBrowserDialog1.SelectedPath;
 
+            processFiles();
+        }
+        //---------------------------------------------------------------------------
+        private void processFiles()
+        {
             if (!Directory.Exists(g_rootPath))
             {
-                g_rootPath = Environment.SpecialFolder.MyMusic.ToString();
-                if (!Directory.Exists(g_rootPath)) return;
+                labelPath.Text = "";
+                return;
             }
+
+            labelPath.Text = g_rootPath;
 
             this.Text = "TunesFiX: \"" + g_rootPath + "\"";
 
@@ -3882,10 +3931,7 @@ namespace TunesFiX
             else
             {
                 // These let us detect remote song-renaming or deleting
-                g_watcherRenamed = false;
-                g_watcherDeleted = false;
-                fileSystemWatcher1.Path = g_rootPath;
-                fileSystemWatcher1.EnableRaisingEvents = true;
+                EnableFileSystemWatcher(true);
 
                 buttonSetChecks.Enabled = true;
                 buttonProcess.Enabled = true;
@@ -4517,7 +4563,11 @@ namespace TunesFiX
 
         private void fileSystemWatcher1_Renamed(object sender, RenamedEventArgs e)
         {
-            fileSystemWatcher1.EnableRaisingEvents = false;
+            if (g_watcherFlushing)
+                return;
+
+            DisableFileSystemWatcher();
+
             g_watcherOldPath = e.OldFullPath;
             g_watcherNewPath = e.FullPath;
             g_watcherRenamed = true;
@@ -4528,7 +4578,11 @@ namespace TunesFiX
         //---------------------------------------------------------------------------
         private void fileSystemWatcher1_Deleted(object sender, FileSystemEventArgs e)
         {
-            fileSystemWatcher1.EnableRaisingEvents = false;
+            if (g_watcherFlushing)
+                return;
+
+            DisableFileSystemWatcher();
+
             g_watcherOldPath = "";
             g_watcherNewPath = e.FullPath;
             g_watcherDeleted = true;
@@ -4536,6 +4590,10 @@ namespace TunesFiX
             MessageBox.Show("Deleted:\n\"" + g_watcherNewPath +
               "\"\n\nYou should click File->Open to re-load or an error may occur!");
         }
+        //---------------------------------------------------------------------------
+        //private void fileSystemWatcher1_Error(object sender, ErrorEventArgs e)
+        //{
+        //}
         //---------------------------------------------------------------------------
         private void NotifyIfFileChanged()
         {
@@ -4545,6 +4603,57 @@ namespace TunesFiX
             else if (g_watcherDeleted)
                 MessageBox.Show("Deleted:\n\"" + g_watcherNewPath +
                 "\"\n\nYou should click File->Open to re-load or an error may occur!");
+        }
+        //---------------------------------------------------------------------------
+        private void EnableFileSystemWatcher(bool bWasEnabled)
+        {
+            if (!Directory.Exists(g_rootPath))
+            {
+                if (bWasEnabled)
+                  DisableFileSystemWatcher();
+            }
+            else if (bWasEnabled && fileSystemWatcher1.EnableRaisingEvents == false)
+            {
+                if (fileSystemWatcher1.Path != g_rootPath)
+                    fileSystemWatcher1.Path = g_rootPath;
+
+                // purge pending changes... 1ms delay
+                g_watcherFlushing = true;
+
+                try { fileSystemWatcher1.EnableRaisingEvents = true; } catch { }
+
+                Application.DoEvents();
+
+                g_watcherRenamed = false;
+                g_watcherDeleted = false;
+
+                g_watcherFlushing = false;
+            }
+        }
+        //---------------------------------------------------------------------------
+        private bool DisableFileSystemWatcher()
+        {
+            bool saveEnabled = fileSystemWatcher1.EnableRaisingEvents;
+
+            if (fileSystemWatcher1.EnableRaisingEvents)
+            {
+                // flush
+                while (true)
+                {
+                    WaitForChangedResult res = fileSystemWatcher1.WaitForChanged(WatcherChangeTypes.All, 1);
+                    if (res.TimedOut)
+                        break;
+                    Application.DoEvents();
+                }
+
+                g_watcherDeleted = false;
+                g_watcherRenamed = false;
+
+                fileSystemWatcher1.EnableRaisingEvents = false;
+            }
+
+            Application.DoEvents();
+            return saveEnabled;
         }
         //---------------------------------------------------------------------------
         #endregion

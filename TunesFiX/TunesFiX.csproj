@@ -77,7 +77,7 @@
     <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>67E2B13C181ECA84342030DA517949FFCB333DCC</ManifestCertificateThumbprint>
@@ -221,7 +221,6 @@
     <None Include="app.config" />
     <EmbeddedResource Include="app.manifest" />
     <None Include="ClassDiagram1.cd" />
-    <None Include="DtsSPC.pfx" />
     <None Include="DtsUWP.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -245,7 +244,7 @@
       <Name>MediaTags</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\MediaTagSharp\src\Taglib-Sharp\TaglibSharp.csproj">
-      <Project>{96153ca0-ef57-485f-baa8-40362039b596}</Project>
+      <Project>{6b143a39-c7b2-4743-9917-92262c60e9a6}</Project>
       <Name>TaglibSharp</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\MediaTagSharp\src\WinMediaLib\WinMediaLib.csproj">
